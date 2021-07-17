@@ -1,11 +1,11 @@
 package pl.bejot.sfgpetclinic.services.map;
 
 import pl.bejot.sfgpetclinic.model.Vet;
-import pl.bejot.sfgpetclinic.services.CrudService;
+import pl.bejot.sfgpetclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Set<Vet> findAll() {
         return super.findAll();
