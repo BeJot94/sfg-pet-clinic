@@ -6,18 +6,15 @@ import pl.bejot.sfgpetclinic.model.Owner;
 import pl.bejot.sfgpetclinic.model.Vet;
 import pl.bejot.sfgpetclinic.services.OwnerService;
 import pl.bejot.sfgpetclinic.services.VetService;
-import pl.bejot.sfgpetclinic.services.map.OwnerServiceMap;
-import pl.bejot.sfgpetclinic.services.map.VetServiceMap;
 
 @Component
 public class DataLoader implements CommandLineRunner {
-
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    public DataLoader() {
-        this.ownerService = new OwnerServiceMap();
-        this.vetService = new VetServiceMap();
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
