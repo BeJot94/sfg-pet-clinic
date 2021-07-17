@@ -5,6 +5,23 @@
     <title>Pet Clinic - Vets Index</title>
 </head>
 <body>
-<h1 th:text="'Pet Clinic - Vets Index'">Welcome message alternative...</h1>
+<h1 th:text="'Pet Clinic - List of Vets'">Vets list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="vet : ${vets}">
+        <td th:text="${vet?.id}">0</td>
+        <td th:text="${vet?.firstName}">Barack</td>
+        <td th:text="${vet?.lastName}">Obama</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
