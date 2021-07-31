@@ -3,11 +3,14 @@ package pl.bejot.sfgpetclinic.bootstrap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pl.bejot.sfgpetclinic.model.Owner;
+import pl.bejot.sfgpetclinic.model.Pet;
 import pl.bejot.sfgpetclinic.model.PetType;
 import pl.bejot.sfgpetclinic.model.Vet;
 import pl.bejot.sfgpetclinic.services.OwnerService;
 import pl.bejot.sfgpetclinic.services.PetTypeService;
 import pl.bejot.sfgpetclinic.services.VetService;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -36,11 +39,31 @@ public class DataLoader implements CommandLineRunner {
         Owner owner = new Owner();
         owner.setFirstName("Robert");
         owner.setLastName("Downey Junior");
+        owner.setAddress("Wojska Polskiego 2");
+        owner.setCity("Pruszcz Gdański");
+        owner.setTelephone("123123123");
+
+        Pet robertsPet = new Pet();
+        robertsPet.setName("Marvel");
+        robertsPet.setPetType(savedDogPetType);
+        robertsPet.setBirthDate(LocalDate.now());
+        robertsPet.setOwner(owner);
+        owner.getPets().add(robertsPet);
         ownerService.save(owner);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Chris");
         owner2.setLastName("Evans");
+        owner2.setAddress("3 Maja 4");
+        owner2.setCity("Gdańsk");
+        owner2.setTelephone("456456456");
+
+        Pet chrisPet = new Pet();
+        chrisPet.setName("Tosiek");
+        chrisPet.setPetType(savedCatPetType);
+        chrisPet.setBirthDate(LocalDate.now());
+        chrisPet.setOwner(owner2);
+        owner2.getPets().add(chrisPet);
         ownerService.save(owner2);
 
         System.out.println("Loaded owners...");
